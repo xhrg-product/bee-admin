@@ -84,6 +84,19 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/apis',
+    component: Layout,
+    redirect: '/apis',
+    children: [
+      {
+        path: 'apis',
+        component: () => import('@/views/apis/index'),
+        name: 'apis',
+        meta: { title: 'apis', icon: 'dashboard', affix: true }
+      }
+    ]
+  },
+  {
     path: '/documentation',
     component: Layout,
     children: [
