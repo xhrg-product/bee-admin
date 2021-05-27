@@ -92,7 +92,7 @@ export const constantRoutes = [
         path: 'apis',
         component: () => import('@/views/apis/index'),
         name: 'apis',
-        meta: { title: 'apis', icon: 'dashboard', affix: true }
+        meta: { title: 'apis', icon: 'table', noCache: true }
       }
     ]
   },

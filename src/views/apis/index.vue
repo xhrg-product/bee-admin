@@ -2,13 +2,13 @@
   <div class="app-container">
     <div class="filter-container">
       <el-input
-        v-model="listQuery.title"
-        placeholder="Title"
+        v-model="listQuery.keyword"
+        placeholder="请输入关键字"
         style="width: 200px;"
         class="filter-item"
         @keyup.enter.native="handleFilter"
       />
-      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
+      <el-button v-waves class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-search" @click="handleFilter">
         Search
       </el-button>
       <el-button
@@ -32,7 +32,7 @@
       style="width: 100%;"
       @sort-change="sortChange"
     >
-      <el-table-column label="接口ID" width="100" align="center">
+      <el-table-column label="接口ID" width="100%" align="center">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
@@ -52,6 +52,31 @@
           <span>{{ row.note }}</span>
         </template>
       </el-table-column>
+
+      <el-table-column label="分组" width="100" align="center">
+        <template slot-scope="{row}">
+          <span>{{ row.groupId }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="创建时间" width="100" align="center">
+        <template slot-scope="{row}">
+          <span>{{ row.createTime }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="修改时间" width="100" align="center">
+        <template slot-scope="{row}">
+          <span>{{ row.updateTime }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="负责人" width="100" align="center">
+        <template slot-scope="{row}">
+          <span>{{ row.userName }}</span>
+        </template>
+      </el-table-column>
+
       <el-table-column label="Actions" align="center" width="400" class-name="small-padding fixed-width">
         <template slot-scope="{row,$index}">
           <el-button type="primary" size="mini" @click="handleUpdate(row)">
@@ -197,11 +222,10 @@ export default {
       listLoading: true,
       listQuery: {
         page: 1,
-        limit: 20,
+        limit: 10,
         importance: undefined,
-        title: undefined,
-        type: undefined,
-        sort: '+id'
+        keyword: undefined,
+        type: undefined
       },
       importanceOptions: [1, 2, 3],
       calendarTypeOptions,
