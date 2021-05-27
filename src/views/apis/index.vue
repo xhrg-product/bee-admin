@@ -32,34 +32,27 @@
       style="width: 100%;"
       @sort-change="sortChange"
     >
-      <el-table-column
-        label="ID"
-        prop="id"
-        sortable="custom"
-        align="center"
-        width="80"
-        :class-name="getSortClass('id')"
-      >
+      <el-table-column label="接口ID" width="100" align="center">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="Date" width="100" align="center">
+      <el-table-column label="名称" width="100" align="center">
         <template slot-scope="{row}">
           <span>{{ row.name }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="Title" min-width="100">
+      <el-table-column label="匹配path" width="100" align="center">
         <template slot-scope="{row}">
-          <el-tag>{{ row.path }}</el-tag>
+          <span>{{ row.path }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="Author" width="100" align="center">
+      <el-table-column label="备注" width="100" align="center">
         <template slot-scope="{row}">
           <span>{{ row.note }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="Actions" align="center" width="230" class-name="small-padding fixed-width">
+      <el-table-column label="Actions" align="center" width="400" class-name="small-padding fixed-width">
         <template slot-scope="{row,$index}">
           <el-button type="primary" size="mini" @click="handleUpdate(row)">
             Edit
