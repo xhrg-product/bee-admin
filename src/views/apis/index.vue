@@ -179,7 +179,7 @@
 
 <script>
 import { fetchPv, createArticle, updateArticle } from '@/api/article'
-import { apiList } from '@/api/apis'
+import { apiList, deleteApi } from '@/api/apis'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
@@ -364,13 +364,10 @@ export default {
       })
     },
     handleDelete(row, index) {
-      this.$notify({
-        title: 'Success',
-        message: 'Delete Successfully',
-        type: 'success',
-        duration: 2000
+      const that = this
+      deleteApi(row.id).then(response => {
+        that.getList()
       })
-      this.list.splice(index, 1)
     },
     handleFetchPv(pv) {
       fetchPv(pv).then(response => {

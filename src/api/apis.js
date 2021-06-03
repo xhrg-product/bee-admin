@@ -7,3 +7,15 @@ export function apiList(query) {
     params: query
   })
 }
+
+export function deleteApi(id) {
+  return request({
+    url: '/apis/delete',
+    method: 'post',
+    data: id,
+    headers: {
+      'Content-Type': 'application/json;'
+    },
+    setTimeout: 5000
+  })
+}
