@@ -80,8 +80,9 @@
       <el-table-column label="Actions" align="center" width="400" class-name="small-padding fixed-width">
         <template slot-scope="{row,$index}">
           <el-button type="primary" size="mini" @click="handleUpdate(row)">
-            Edit
+            修改
           </el-button>
+          <!--
           <el-button
             v-if="row.groupId!='published'"
             size="mini"
@@ -93,8 +94,9 @@
           <el-button v-if="row.groupId!='draft'" size="mini" @click="handleModifyStatus(row,'draft')">
             Draft
           </el-button>
+          -->
           <el-button v-if="row.groupId!='deleted'" size="mini" type="danger" @click="handleDelete(row,$index)">
-            Delete
+            删除
           </el-button>
         </template>
       </el-table-column>
@@ -155,6 +157,7 @@
           />
         </el-form-item>
       </el-form>
+
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">
           Cancel
@@ -266,7 +269,6 @@ export default {
       apiList(this.listQuery).then(response => {
         this.list = response.data.items
         this.total = response.data.total
-
         // Just to simulate the time of the request
         setTimeout(() => {
           this.listLoading = false
@@ -364,9 +366,8 @@ export default {
       })
     },
     handleDelete(row, index) {
-      const that = this
       deleteApi(row.id).then(response => {
-        that.getList()
+        this.getList()
       })
     },
     handleFetchPv(pv) {
